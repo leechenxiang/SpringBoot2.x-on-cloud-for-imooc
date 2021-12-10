@@ -1,0 +1,52 @@
+server:
+  port: ${port:8088}
+
+spring:
+  application:
+    name: springboot-imooc
+  thymeleaf:
+    prefix: classpath:/templates/html/
+    suffix: .html
+  data:
+    mongodb:
+      database: imooc
+      uri: mongodb://root:root@10.206.0.11:27017
+  rabbitmq:
+    host: 10.206.0.11    # 公网IP，如果是发布到服务器，需要修改为内网IP
+    port: 5672
+    username: imooc
+    password: imooc
+    virtual-host: imooc
+  redis:
+    host: 10.206.0.11
+    port: 6379
+    database: 0
+    password: imooc
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 10.206.0.11:8848  # nacos的服务所在地址，ip:port
+
+
+
+# 打开监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+# MinIO 配置
+minio:
+  endpoint: http://10.206.0.11:9000      # MinIO服务地址
+  fileHost: http://175.27.252.166:9000      # 文件地址host
+  bucketName: imooc                      # 存储桶bucket名称
+  accessKey: root                         # 用户名
+  secretKey: 12345678                     # 密码
+  imgSize: 1024                           # 图片大小限制，单位：m
+  fileSize: 1024                          # 文件大小限制，单位：m
+
+alibaba:
+  config:
+    limit: 100
+    name: 限流

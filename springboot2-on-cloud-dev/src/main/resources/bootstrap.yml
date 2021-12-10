@@ -1,0 +1,8 @@
+#spring:
+#  application:
+#    name: springboot-imooc
+#  cloud:
+#    nacos:
+#      config:
+#        server-addr: 175.27.252.166:8848
+#        file-extension: yaml
